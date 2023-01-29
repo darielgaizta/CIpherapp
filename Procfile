@@ -1,0 +1,1 @@
+web: gunicorn cipherapp.wsgi --log-file -
