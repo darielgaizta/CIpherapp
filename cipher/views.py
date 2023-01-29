@@ -24,17 +24,16 @@ def index(request):
 
 		form = UploadFileForm(request.POST, request.FILES)
 
-		files = []
+		# Get the name and path of the uploaded file
+		filename = str(form['upload'].value())
+		filepath = os.path.join(settings.MEDIA_ROOT, filename)
 
-		if form.is_valid():
-			# Get the name and path of the uploaded file
-			filename = str(form['upload'].value())
-			filepath = os.path.join(settings.MEDIA_ROOT, filename)
-			
+		if form.is_valid() and filename != 'None':
 			if submit_btn == 'encrypt':
 				# Saving to file system
 				fs = FileSystemStorage()
-				fs.save(filename, request.FILES['upload'])
+				if filename not in os.listdir(settings.MEDIA_ROOT):
+					fs.save(filename, request.FILES['upload'])
 				io.encrypt(filepath, io.generate_key())
 				context['success'] = 'File encrypted.'
 			else:
@@ -45,30 +44,44 @@ def index(request):
 					messages.info(request, 'Decrypting file requires key.')
 
 		else:
-			if cipher == 'playfair':
-				if not key:
-					messages.info(request, 'Playfair cipher requires key.')
-				if submit_btn == 'encrypt':
-					result = playfair.encrypt(plain_text, key)
-				else:
-					result = playfair.decrypt(plain_text, key)
-			elif cipher == 'vigenere':
-				# Using OTP
-				if not key:
-					key = io.read_file_txt(settings.STATIC_ROOT+'\\file\\key.txt')[:len(plain_text)]
-				# Using Vigenere
-				print('KEY', key)
-				if submit_btn == 'encrypt':
-					result = vigenere.encrypt(plain_text, key)
-				else:
-					result = vigenere.decrypt(plain_text, key)
+			try:
+				if cipher == 'playfair':
+					# Using Playfair
+					if not key:
+						messages.info(request, 'Playfair cipher requires key.')
+					else:
+						if submit_btn == 'encrypt':
+							result = playfair.encrypt(plain_text, key)
+						else:
+							result = playfair.decrypt(plain_text, key)
+				elif cipher == 'vigenere':
+					# Using OTP
+					if not key:
+						key = io.read_file_txt(settings.STATIC_ROOT+'\\file\\key.txt')[:len(plain_text)]
+					# Using Vigenere
+					if submit_btn == 'encrypt':
+						result = vigenere.encrypt(plain_text, key)
+					else:
+						result = vigenere.decrypt(plain_text, key)
+				elif cipher == 'ext_vigenere':
+					cipher = 'Extended Vigenere'
+					# Using extended Vigenere
+					if not key:
+						messages.info(request, 'Extended Vigenere cipher requires key.')
+					else:
+						if submit_btn == 'encrypt':
+							result = vigenere.extended_encrypt(plain_text, key)
+						else:
+							result = vigenere.extended_decrypt(plain_text, key)
 
-			context = {
-				'plain_text': plain_text,
-				'key': key,
-				'cipher': cipher.capitalize(),
-				'form': UploadFileForm(),
-				'result': result
-			}
+				context = {
+					'plain_text': plain_text,
+					'key': key,
+					'cipher': cipher.capitalize(),
+					'form': UploadFileForm(),
+					'result': result
+				}
+			except Exception as e:
+				context['error'] = f'Invalid characters on plain text or key for {cipher.capitalize()} cipher.'
 
 	return render(request, 'index.html', context)
