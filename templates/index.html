@@ -33,10 +33,10 @@
 				<div class="form-group my-2">
 					<label for="file-upload">Upload a file</label>
 					{{ form.upload }}
-					<small class="color-comment">You can choose either to encrypt a message from an input or a file.</small>
+					<small class="color-comment">Encrypting file will automatically use extended Vigenere cipher.</small>
 				</div>
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="cipher" value="vigenere" id="vigenere" checked>
+					<input class="form-check-input" type="radio" name="cipher" value="vigenere" id="vigenere">
 					<label class="form-check-label" for="vigenere">Vigenere / One-time Pad</label>
 				</div>
 				<div class="form-check">

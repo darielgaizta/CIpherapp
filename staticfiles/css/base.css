@@ -72,7 +72,6 @@
 
 strong {
 	color: var(--color-green);
-	font-weight: bold;
 }
 
 small:hover {

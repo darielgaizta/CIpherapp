@@ -2,13 +2,6 @@
 Cipher for I/O File
 '''
 
-import os
-from pathlib import Path
-from django.conf import settings
-from cryptography.fernet import Fernet
-
-ASCII = ''.join(chr(i) for i in range(512))
-
 def read_file_txt(filepath):
 	with open(filepath, 'r') as file:
 		return file.read()
