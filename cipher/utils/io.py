@@ -13,33 +13,41 @@ def read_file_txt(filepath):
 	with open(filepath, 'r') as file:
 		return file.read()
 
-def read_file_bin(filepath):
-	with open(filepath, 'rb') as file:
+def read_file_as_bytes(filename):
+	with open(filename, 'rb') as file:
 		return file.read()
 
-def generate_key():
-	key = Fernet.generate_key()
-	with open(settings.DOTENV_PATH, 'wb') as filekey:
-		filekey.write(key)
+def write_file_in_bytes(filename, content):
+	with open(filename, 'wb') as file:
+		file.write(content)
+
+def get_extended_key(key, length):
+	if len(key) < length:
+		key = list(key)
+		for i in range(length - len(key)):
+			key.append(key[i % len(key)])
+		return ''.join(key)
 	return key
 
-# Encrypt using Fernet
-def encrypt(filename, key):
-	fernet = Fernet(key)
-	with open(filename, 'rb') as file:
-		original = file.read()
-	encrypted = fernet.encrypt(original)
-	with open(filename, 'wb') as encrypted_file:
-		encrypted_file.write(encrypted)
+def encrypt(byte_string, key):
+	retval = b''
+	# Encode key from chars to bytes
+	encoded_key = str.encode(get_extended_key(key, len(byte_string)))
+	for i in range(len(byte_string)):
+		b = (byte_string[i] + encoded_key[i]) % 256
+		retval += bytes([b])
 
-# Decrypt using Fernet
-def decrypt(filename, key):
-	fernet = Fernet(key)
-	with open(filename, 'rb') as encrypted_file:
-		encrypted = encrypted_file.read()
-	decrypted = fernet.decrypt(encrypted)
-	with open(filename, 'wb') as decrypted_file:
-		decrypted_file.write(decrypted)
+	return retval
+
+def decrypt(byte_string, key):
+	retval = b''
+	# Encode key from chars to bytes
+	encoded_key = str.encode(get_extended_key(key, len(byte_string)))
+	for i in range(len(byte_string)):
+		b = (byte_string[i] - encoded_key[i]) % 256
+		retval += bytes([b])
+
+	return retval
 
 if __name__ == '__main__':
 	pass

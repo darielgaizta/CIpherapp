@@ -30,15 +30,24 @@ def index(request):
 
 		if form.is_valid() and filename != 'None':
 			if submit_btn == 'encrypt':
-				# Saving to file system
-				fs = FileSystemStorage()
-				if filename not in os.listdir(settings.MEDIA_ROOT):
-					fs.save(filename, request.FILES['upload'])
-				io.encrypt(filepath, io.generate_key())
-				context['success'] = 'File encrypted.'
+				if key:
+					# Saving to file system
+					fs = FileSystemStorage()
+					if filename not in os.listdir(settings.MEDIA_ROOT):
+						fs.save(filename, request.FILES['upload'])
+					content = io.read_file_as_bytes(filepath)
+					encrypted_content = io.encrypt(content, key)
+					io.write_file_in_bytes(filepath, encrypted_content)
+					context['key'] = key
+					context['success'] = 'File encrypted.'
+				else:
+					messages.info(request, 'Encrypting file requires key.')
 			else:
 				if key:
-					io.decrypt(filepath, key)
+					content = io.read_file_as_bytes(filepath)
+					decrypted_content = io.decrypt(content, key)
+					io.write_file_in_bytes(filepath, decrypted_content)
+					context['key'] = key
 					context['success'] = 'File decrypted.'
 				else:
 					messages.info(request, 'Decrypting file requires key.')
