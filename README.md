@@ -1,6 +1,6 @@
 # Cipherapp
 
-- Tucil II4035 Kriptografi dan Koding
+- Tucil II4031 Kriptografi dan Koding
 - Stacks: *Stated in requirements.txt*
 
 ## How To Run
