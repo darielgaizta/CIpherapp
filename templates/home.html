@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>II4031 Kriptografi dan Koding</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block jquery %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#home").addClass("nav-active");
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="bg-modifier">
+	<div>
+		<small class="color-comment">Website ini dibuat untuk memenuhi Tucil dan Tubes dari</small>
+		<h1 class="color-purple">II4031 Kriptografi dan Koding</h1>
+	</div>
+</main>
+{% endblock %}

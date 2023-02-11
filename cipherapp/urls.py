@@ -19,8 +19,10 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('', include('home.urls')),
     path('admin/', admin.site.urls),
-    path('', include('cipher.urls'))
+    path('tucil/01/cipher/', include('cipher.urls')),
+    path('tucil/02/stream_cipher/', include('stream_cipher.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

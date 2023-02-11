@@ -10,7 +10,7 @@ import os
 import random
 
 # Create your views here.
-def index(request):
+def cipher(request):
 	context = {
 		'form': UploadFileForm()
 	}
@@ -105,4 +105,4 @@ def index(request):
 			}
 			messages.info(request, 'Please select a cipher.')
 
-	return render(request, 'index.html', context)
+	return render(request, '01_cipher.html', context)

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>II4031 Kriptografi dan Koding - Tucil 02</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/02_stream_cipher.css' %}">
+{% endblock %}
+
+{% block jquery %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#tucil").addClass("nav-active");
+		$("#tucil_02").addClass("nav-active");
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+Hello, World!
+{% endblock %}

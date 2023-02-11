@@ -1,25 +1,33 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://kit.fontawesome.com/3f111fc405.js" crossorigin="anonymous"></script>
-	<title>Cryptography - Cipher</title>
-</head>
-<body class="bg-modifier color-legend">
-	<header class="container my-5">
+
+{% block title %}
+<title>II4031 Kriptografi dan Koding - Tucil 01</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/01_cipher.css' %}">
+{% endblock %}
+
+{% block jquery %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#tucil").addClass("nav-active");
+		$("#tucil_01").addClass("nav-active");
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="bg-modifier color-legend py-3">
+	<header class="container">
 		<h1 class="fw-bold color-purple">Cryptography - Cipher</h1>
 		<p>This website is made for my first project of II4031 Cryptography and Coding.</p>
 	</header>
 	<main class="container">
 		<section id="main-section">
-			<form method="POST" action="{% url 'index' %}" enctype="multipart/form-data">
+			<form method="POST" action="{% url 'cipher' %}" enctype="multipart/form-data">
 				{% csrf_token %}
 				<div class="form-group">
 					<label for="plain-text">Plain Text</label>
@@ -60,7 +68,7 @@
 				<textarea class="response-field form-control" placeholder="Your new cipher text will appear here...">{{ result }}</textarea>
 			</div>
 		</section>
-		<section id="description-section" class="my-5">
+		<section id="description-section" class="mt-5">
 			<div class="cipher-desc">
 				<h2 class="color-purple">Vigenere Cipher</h2>
 				<p>The <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenère cipher</a> is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a form of <a href="https://en.wikipedia.org/wiki/Polyalphabetic_cipher">polyalphabetic substitution</a>.<br><br>First described by <a href="https://en.wikipedia.org/wiki/Giovan_Battista_Bellaso">Giovan Battista Bellaso</a> in 1553, the cipher is easy to understand and implement, but it resisted all attempts to break it until 1863, three centuries later. This earned it the description le chiffrage indéchiffrable (French for 'the indecipherable cipher'). Many people have tried to implement encryption schemes that are essentially Vigenère ciphers. In 1863, <a href="https://en.wikipedia.org/wiki/Friedrich_Kasiski">Friedrich Kasiski</a> was the first to publish a general method of deciphering Vigenère ciphers.</p>
@@ -80,16 +88,5 @@
 			<small class="color-comment">All the words and definition about the cipher above are taken from Wikipedia.</small>
 		</section>
 	</main>
-	<footer class="mt-3 p-3 bg-legend color-alpha">
-		<div class="container d-flex justify-content-between">
-			<p>&copy; II4035 / 18220009</p>
-			<div id="social-footer-wrapper">
-				<a href="https://github.com/darielgaizta" class="social-footer fs-6 mx-3 color-modifier"><i class="fa-brands fa-github"></i></a>
-				<a href="https://id.linkedin.com/in/fatih-darielma-gaizta-633922200" class="social-footer fs-6 mx-3 color-modifier"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="https://www.instagram.com/darielma_/" class="social-footer fs-6 mx-3 color-modifier"><i class="fa-brands fa-instagram"></i></a>
-			</div>
-		</div>
-	</footer>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-</html>
+</div>
+{% endblock %}
