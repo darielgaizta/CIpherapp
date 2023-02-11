@@ -20,5 +20,46 @@
 {% endblock %}
 
 {% block content %}
-Hello, World!
+<header class="container">
+	<h1 class="color-purple">Stream Cipher</h1>
+	<p>Modifying Key-scheduling Algorithm (KSA) and Pseudo-random Generation Algorithm (PRGA) in RC4 with Extended Vigenere Cipher.</p>
+</header>
+<main class="container pb-3">
+	<section class="grid-screen">
+		<div id="form-wrapper" class="w-100">
+			<form method="POST" action="{% url 'stream_cipher' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="plain_text">Plain text:</label>
+					<textarea class="form-control" id="plain_text" placeholder="Enter your plain text..." rows="3" name="plain_text">{{ plain_text }}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="key">Key:</label>
+					<input type="text" name="key" class="form-control" id="key" placeholder="Enter your key..." value="{{ key }}">
+				</div>
+				<div class="form-group">
+					<label for="file_upload">Upload a file</label>
+					{{ form.upload }}
+				</div>
+				<div class="form-check">
+					<input type="checkbox" name="is_save_file" id="is_save_file" class="form-check-input">
+					<label class="form-check-label" for="is_save_file">Do you want save the result (cipher) to a file?</label>
+					<small class="d-block color-comment">The saved and uploaded files will be stored in a folder called <b>media</b>.</small>
+				</div>
+				<button type="submit" value="encrypt" name="submit_btn">Encrypt</button>
+				<button type="submit" value="decrypt" name="submit_btn">Decrypt</button>
+			</form>
+		</div>
+		<div id="result-box">
+			<label>Result:</label>
+			<textarea class="form-control" id="result-field" placeholder="Your new cipher text will appear here...">{{ result }}</textarea>
+		</div>
+	</section>
+	<hr>
+	<section>
+		<h2 class="color-pink">RC4</h2>
+		<p>In cryptography, <a href="https://en.wikipedia.org/wiki/RC4" target="blank">RC4</a> (Rivest Cipher 4, also known as ARC4 or ARCFOUR, meaning Alleged RC4, see below) is a <a href="https://en.wikipedia.org/wiki/Stream_cipher" target="blank">stream cipher</a>. While it is remarkable for its simplicity and speed in software, multiple vulnerabilities have been discovered in RC4, rendering it insecure. It is especially vulnerable when the beginning of the output <a href="https://en.wikipedia.org/wiki/Keystream" target="blank">keystream</a> is not discarded, or when nonrandom or related keys are used. Particularly problematic uses of RC4 have led to very insecure protocols such as Wired Equivalent Privacy (WEP).</p>
+		<p>As of 2015, there is speculation that some state cryptologic agencies may possess the capability to break RC4 when used in the TLS protocol. IETF has published RFC 7465 to prohibit the use of RC4 in TLS; Mozilla and Microsoft have issued similar recommendations. A number of attempts have been made to strengthen RC4, notably Spritz, RC4A, VMPC, and RC4+.</p>
+	</section>
+</main>
 {% endblock %}

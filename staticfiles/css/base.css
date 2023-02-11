@@ -12,6 +12,11 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+body {
+	background-color: var(--color-modifier);
+	color: var(--color-legend);
+}
+
 .color-alpha {
 	color: var(--color-alpha);
 }

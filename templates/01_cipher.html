@@ -31,7 +31,7 @@
 				{% csrf_token %}
 				<div class="form-group">
 					<label for="plain-text">Plain Text</label>
-					<textarea class="form-control" id="plain-text" placeholder="Enter your plain text..." rows="5" name="plain_text">{{ plain_text }}</textarea>
+					<textarea class="form-control" id="plain-text" placeholder="Enter your plain text..." rows="3" name="plain_text">{{ plain_text }}</textarea>
 				</div>
 				<div class="form-group my-2">
 					<label for="key">Key</label>
@@ -68,21 +68,22 @@
 				<textarea class="response-field form-control" placeholder="Your new cipher text will appear here...">{{ result }}</textarea>
 			</div>
 		</section>
+		<hr>
 		<section id="description-section" class="mt-5">
 			<div class="cipher-desc">
-				<h2 class="color-purple">Vigenere Cipher</h2>
+				<h2 class="color-pink">Vigenere Cipher</h2>
 				<p>The <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenère cipher</a> is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a form of <a href="https://en.wikipedia.org/wiki/Polyalphabetic_cipher">polyalphabetic substitution</a>.<br><br>First described by <a href="https://en.wikipedia.org/wiki/Giovan_Battista_Bellaso">Giovan Battista Bellaso</a> in 1553, the cipher is easy to understand and implement, but it resisted all attempts to break it until 1863, three centuries later. This earned it the description le chiffrage indéchiffrable (French for 'the indecipherable cipher'). Many people have tried to implement encryption schemes that are essentially Vigenère ciphers. In 1863, <a href="https://en.wikipedia.org/wiki/Friedrich_Kasiski">Friedrich Kasiski</a> was the first to publish a general method of deciphering Vigenère ciphers.</p>
 			</div>
 			<div class="cipher-desc">
-				<h2 class="color-purple">Extended Vigenere Cipher</h2>
+				<h2 class="color-pink">Extended Vigenere Cipher</h2>
 				<p>Technically, it is similar to Vigenere Cipher. The difference is it supports up to 256 of ASCII characters.</p>
 			</div>
 			<div class="cipher-desc">
-				<h2 class="color-purple">Playfair Cipher</h2>
+				<h2 class="color-pink">Playfair Cipher</h2>
 				<p>The <a href="https://en.wikipedia.org/wiki/Playfair_cipher">Playfair cipher</a> or Playfair square or Wheatstone–Playfair cipher is a manual symmetric encryption technique and was the first literal digram substitution cipher. The scheme was invented in 1854 by <a href="https://en.wikipedia.org/wiki/Charles_Wheatstone">Charles Wheatstone</a>, but bears the name of <a href="https://en.wikipedia.org/wiki/Lyon_Playfair,_1st_Baron_Playfair">Lord Playfair</a> for promoting its use.<br><br>The technique encrypts pairs of letters (<a href="https://en.wikipedia.org/wiki/Bigram">bigrams</a> or digrams), instead of single letters as in the simple substitution cipher and rather more complex Vigenère cipher systems then in use. The Playfair is thus significantly harder to break since the frequency analysis used for simple substitution ciphers does not work with it. The frequency analysis of bigrams is possible, but considerably more difficult. With 600 possible bigrams rather than the 26 possible monograms (single symbols, usually letters in this context), a considerably larger cipher text is required in order to be useful.</p>
 			</div>
 			<div class="cipher-desc">
-				<h2 class="color-purple">One-time Pad</h2>
+				<h2 class="color-pink">One-time Pad</h2>
 				<p>In <a href="https://en.wikipedia.org/wiki/Cryptography">cryptography</a>, the one-time pad (OTP) is an encryption technique that cannot be cracked, but requires the use of a single-use <a href="https://en.wikipedia.org/wiki/Pre-shared_key">pre-shared key</a> that is not smaller than the message being sent. In this technique, a plaintext is paired with a random secret <a href="https://en.wikipedia.org/wiki/Key_(cryptography)">key</a> (also referred to as a one-time pad). Then, each bit or character of the plaintext is encrypted by combining it with the corresponding bit or character from the pad using <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular addition</a>.</p>
 			</div>
 			<small class="color-comment">All the words and definition about the cipher above are taken from Wikipedia.</small>
