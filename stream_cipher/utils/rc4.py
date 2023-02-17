@@ -10,7 +10,7 @@ def random_key(k):
     for i in range (len(k)):
         list_key.append(k[i])
         
-    n = (len(list_key)%5)
+    n = ((len(list_key)%5)+1)
         
     for i in range(n):
         last_element = list_key[-1]
