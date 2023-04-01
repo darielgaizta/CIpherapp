@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>II4031 Kriptografi dan Koding - About</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block jquery %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#about").addClass("nav-active");
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+<main class="bg-modifier container-fluid">
+	<p>Berikut merupakan daftar NIM pembuat tugas kecil (01) Cipher, (02) Stream Cipher, dan (03) Digital Signature.</p>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr class="bg-alpha">
+					<th class="color-legend">Tucil</th>
+					<th class="color-legend">NIM Pembuat</th>
+				</tr>
+				<tr>
+					<th scope="row" class="color-legend">01</th>
+					<td class="color-legend">18220009</td>
+				</tr>
+				<tr>
+					<th scope="row" class="color-legend">02</th>
+					<td class="color-legend">18220009 / 18220049</td>
+				</tr>
+				<tr>
+					<th scope="row" class="color-legend">03</th>
+					<td class="color-legend">18220009 / 18220031 / 18220110</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<p><strong>NOTE</strong> Jika Anda membuka website ini langsung dari <a href="https://cryptography.darielgaizta.site" target="blank">https://cryptography.darielgaizta.site</a>, fungsi enkripsi dan dekripsi file tidak akan bekerja karena website ini dideploy secara gratis dan tidak menggunakan layanan cloud file storage seperti Amazon S3 Bucket atau Google Cloud Platform.</p>
+</main>
+{% endblock %}
