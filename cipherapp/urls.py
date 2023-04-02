@@ -22,8 +22,9 @@ urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('about/', include('about.urls')),
-    path('tucil/01/cipher/', include('cipher.urls')),
-    path('tucil/02/stream_cipher/', include('stream_cipher.urls')),
+    path('tucil/1/cipher/', include('cipher.urls')),
+    path('tucil/2/stream_cipher/', include('stream_cipher.urls')),
+    path('tucil/3/digital_signature/', include('digital_signature.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

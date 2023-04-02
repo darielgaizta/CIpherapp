@@ -1,0 +1,81 @@
+main {
+    min-height: 100vh;
+}
+
+form {
+    max-width: 70%;
+    margin: auto;
+}
+
+.grid-header {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.sidenotes {
+    background-color: var(--color-alpha);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.generator-field {
+    padding-left: 2em;
+}
+
+.generator {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.generator input {
+    min-height: 2em;
+    width: 100%;
+    border-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.generator button {
+    min-width: 12em;
+    min-height: 2em;
+    border-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.btn-group button {
+    font-weight: bold;
+    color: var(--color-legend);
+}
+
+#btn-sign {
+    background-color: var(--color-pink);
+}
+
+#btn-verify {
+    background-color: var(--color-comment);
+}
+
+@media screen and (max-width: 960px) {
+    form {
+        max-width: 100%;
+    }
+
+    .grid-header {
+        display: block;
+    }
+
+    .generator-field {
+        padding-left: 0;
+    }
+
+    .generator button {
+        font-size: 0.7em;
+    }
+}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>II4031 Kriptografi dan Koding - Tucil 03</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/03_digital_signature.css' %}">
+{% endblock %}
+
+{% block jquery %}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#tucil").addClass("nav-active");
+		$("#tucil_03").addClass("nav-active");
+	})
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<header>
+		<h1 class="color-purple">Digital Signature</h1>
+		<p>Digital signature is a cryptographic value that depends on the contents of the message and key. The digital signature on a document will always be the same regardless of its contents, but the signature on a document will be different from signatures on other documents even though the sender and private key used are the same.</p>
+	</header>
+	<main class="pb-3">
+		<form action="" method="post" class="my-5">
+			<div class="grid-header my-3">
+				<div class="sidenotes p-3">
+					<strong>NOTE</strong>
+					<label>Use a random-generated or enter your own public key and private key for RSA!</label>
+				</div>
+				<div class="generators">
+					<div class="generator-field">
+						<div class="generator my-3">
+							<button class="btn bg-comment color-legend">Generate Private Key</button>
+							<input type="text" name="private_key" id="private_key" placeholder="Enter your private key">
+						</div>
+						<div class="generator my-3">
+							<button class="btn bg-comment color-legend">Generate Public Key</button>
+							<input type="text" name="public_key" id="public_key" placeholder="Enter your public key">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="mb-3 form-group">
+					<label for="form_file" class="form-label">Upload a file</label>
+					<input type="file" name="uploaded_file" id="form_file" class="form-control">
+				</div>
+				<div class="form-group btn-group">
+					<button class="" id="btn-sign">Sign</button>
+					<button class="" id="btn-verify">Verify</button>
+				</div>
+			</div>
+		</form>
+		<small class="color-comment text-center d-block w-75 m-auto">I would highly recommend you to run this application from your local server since my website is using a free plan hosting that doesn't support file storing. Every uploaded file then will be stored on <b>media</b> folder.</small>
+	</main>
+</div>
+{% endblock %}
