@@ -25,10 +25,6 @@ Generate RSA Key
 import math
 import hashlib
 
-NUMBERS = '0123456789'
-ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
-CHARPOOL = list(ALPHABET + ALPHABET.lower() + NUMBERS)
 
 '''
 Read File as Bytes
@@ -117,32 +113,4 @@ def scan_content(content, tag=b'<ds>'):
 
 
 if __name__ == '__main__':
-    filename = 'test.txt'
-
-    # Pick random prime number
-    p, q = 47, 71
-    
-    # Generate RSA Key
-    private_key, public_key = generate_rsa_key(p, q)
-    print('Keys:', private_key, public_key)
-
-    # Read content
-    content = read_file_in_bytes(filename=filename)
-    print('Content:', content)
-    content, signature = scan_content(content=content)
-    print('Signature:', signature)
-
-    # # Encryption
-    hashed_content = hash_message(encoded_string=content)
-    # encrypted_message = sign_digital_signature(hashed_content, private_key)
-
-    # print('Hashed:', hashed_content)
-    # print('Encrypted:', encrypted_message)
-
-    # # Attach digital signature
-    # new_content = content + encrypted_message.encode('utf-8')
-    # write_file_in_bytes(filename=filename, content=new_content)
-
-    # Decryption
-    decrypted_message = verify_signature(hashed_content, signature, public_key)
-    print('Authentic:', decrypted_message)
+    pass
