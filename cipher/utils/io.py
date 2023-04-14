@@ -11,7 +11,7 @@ def read_file_as_bytes(filename):
 		return file.read()
 
 def write_file_in_bytes(filename, content):
-	with open(filename, 'wb') as file:
+	with open(filename, 'wb+') as file:
 		file.write(content)
 
 def get_extended_key(key, length):

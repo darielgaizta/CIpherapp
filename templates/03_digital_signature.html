@@ -26,7 +26,8 @@
 		<p>Digital signature is a cryptographic value that depends on the contents of the message and key. The digital signature on a document will always be the same regardless of its contents, but the signature on a document will be different from signatures on other documents even though the sender and private key used are the same.</p>
 	</header>
 	<main class="pb-3">
-		<form action="" method="post" class="my-5">
+		<form action="" method="POST" class="my-5" enctype="multipart/form-data">
+			{% csrf_token %}
 			<div class="grid-header my-3">
 				<div class="sidenotes p-3">
 					<strong>NOTE</strong>
