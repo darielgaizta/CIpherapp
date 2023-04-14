@@ -7,4 +7,4 @@ How to run:
 	3. Jalankan program main.py
 	   >>> python main.py
 
-[NOTE] Untuk menghindari terjadinya error, jangan buka file Excel ketika sedang menjalankan program.
+[NOTE] Untuk menghindari terjadinya error, jangan buka file Excel ketika sedang menjalankan program.><ds>88822</ds>

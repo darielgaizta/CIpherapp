@@ -31,17 +31,17 @@
 			<div class="grid-header my-3">
 				<div class="sidenotes p-3">
 					<strong>NOTE</strong>
-					<label>Define or generate your own P and Q numbers to get your public key and private key!</label>
+					<label>Define or generate your own prime P and Q numbers to get your encryption key and decryption key!</label>
 				</div>
 				<div class="generators">
 					<div class="generator-field">
 						<div class="generator my-3">
-							<label class="btn bg-comment color-legend" onclick="generateKey('public_key')">Generate P</label>
-							<input type="text" name="public_key" id="public_key" placeholder="Enter your public key" value={{ p }}>
+							<label class="btn bg-comment color-legend" onclick="generateKey('p')">Generate P</label>
+							<input type="text" name="p" id="p" placeholder="Enter your P" value="{{ p }}" required>
 						</div>
 						<div class="generator my-3">
-							<label class="btn bg-comment color-legend" onclick="generateKey('private_key')">Generate Q</label>
-							<input type="text" name="private_key" id="private_key" placeholder="Enter your private key" value={{ q }}>
+							<label class="btn bg-comment color-legend" onclick="generateKey('q')">Generate Q</label>
+							<input type="text" name="q" id="q" placeholder="Enter your Q" value="{{ q }}" required>
 						</div>
 					</div>
 				</div>
@@ -58,10 +58,26 @@
 			</div>
 		</form>
 		<small class="color-comment text-center d-block w-75 m-auto">I would highly recommend you to run this application from your local server since my website is using a free plan hosting that doesn't support file storing. Every uploaded file then will be stored on <b>media</b> folder.</small>
-		<p class="text-center">
+		{% if message_pos or message_neg %}
+		<p class="text-center mt-5">
 			<span class='color-green'>{{ message_pos }}</span>
 			<span class='color-red'>{{ message_neg }}</span>
+			{% for message in messages %}
+				<small class="color-red">{{ message }}</small>
+			{% endfor %}
 		</p>
+		{% endif %}
+
+		{% if encryption_key and decryption_key %}
+		<hr>
+		<p>
+			<span class='color-cyan'>Encryption Key: {{ encryption_key }}</span>&nbsp;//&nbsp;
+			<span class='color-cyan'>Decryption Key: {{ decryption_key }}</span>&nbsp;//&nbsp;
+			<span class='color-cyan'>P: {{ p }}</span>&nbsp;//&nbsp;
+			<span class='color-cyan'>Q: {{ q }}</span>
+			<small class="color-comment d-block w-75">All parameters are saved to <b>params.txt</b> in <b>media</b> folder.</small>
+		</p>
+		{% endif %}
 	</main>
 </div>
 {% endblock %}
